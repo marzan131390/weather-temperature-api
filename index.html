@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Weather in Different City.</title>
+    <style> 
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url("images/bg-image.jpg") no-repeat;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin-top: 50px;
+        }
+        #input-field {
+            width: 340px;
+            height: 35px;
+            padding: 0px 15px;
+            font-size: 16px;
+            border: none;
+        }
+        .input-content {
+            position: absolute;
+        }
+        #search-btn {
+            background-color: #DC3545;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            font-size: 18px;
+            position: relative;
+            left: -3px;
+        }
+        #search-btn:hover {
+            background-color: #C82333;
+        }
+        #weather-information {
+            margin-top: 120px;
+            color: #fff;
+        }
+        #weather-information h1 {
+            font-size: 45px;
+            margin: 10px 0px;
+        }
+        #weather-information h3 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+         #weather-information h5 {
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div class="input-content"> 
+            <input type="text" name="" id="input-field" placeholder="Enter a location for Weather">
+            <a id="search-btn">Search</a>
+        </div >
+        <div id="weather-information"> 
+            <div id="weather-img"> 
+                <p>Hello there</p>
+            </div>
+            <h1 id="city-name"> 
+                Hello there
+            </h1>
+            <h3 id="temperature"> 
+                Hello there
+            </h3>
+            <h5 id="weather-forecast"> 
+                Hello there
+            </h5>
+        </div>
+    </div>
+    <script> 
+    
+    </script>
+</body>
+</html>
