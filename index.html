@@ -59,9 +59,13 @@
             margin-bottom: 10px;
             text-align: center;
         }
-         #weather-information h5 {
-            font-size: 25px;
+         #weather-information p {
+            font-size: 23px;
             text-align: center;
+            text-transform: capitalize;
+        }
+        #weather-img {
+            margin: 0px 0px -15px 13px;
         }
     </style>
 </head>
@@ -73,17 +77,15 @@
         </div >
         <div id="weather-information"> 
             <div id="weather-img"> 
-                
+                <img id="image"></img>
             </div>
             <h1 id="city-name"> 
                 City Name
             </h1>
-            <h3 id="temperature"> 
-                Temperature
-            </h3>
-            <h5 id="weather-forecast"> 
+            <h3><span id="temperature">Temperature</span>&deg;C </h3>
+            <p id="weather-forecast"> 
                 Weather Forecast
-            </h5>
+            </p>
         </div>
     </div>
     <script> 
@@ -94,10 +96,16 @@
             let temperatureInfo = data.main.temp;
             temperature.innerText = temperatureInfo;
             let weatherForecast = document.getElementById('weather-forecast');
-            let forecastInfo = data.weather[0].main;
+            let forecastInfo = data.weather[0].description;
             weatherForecast.innerText = forecastInfo;
-            // console.log(data);
-            // console.log(forecastInfo);
+            let weatherImg = document.getElementById("image");
+            let imageUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            // let img = document.createElement("img");
+            weatherImg.setAttribute("src", imageUrl);
+            // weatherImg.appendChild(img);
+            // let changeImg = document.getElementById("image");
+            // changeImg.innerHTML = img;
+            
         }
 
         //Load All Data From External Server by API...
