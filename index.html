@@ -25,7 +25,9 @@
             height: 35px;
             padding: 0px 15px;
             font-size: 16px;
-            border: none;
+            border: 1px solid #0A4A76;
+            border-right: none;
+            border-radius: .50rem 0 0 .50rem;
         }
         .input-content {
             position: absolute;
@@ -38,6 +40,7 @@
             font-size: 18px;
             position: relative;
             left: -3px;
+            cursor: pointer;
         }
         #search-btn:hover {
             background-color: #C82333;
@@ -49,10 +52,12 @@
         #weather-information h1 {
             font-size: 45px;
             margin: 10px 0px;
+            text-transform: capitalize;
         }
         #weather-information h3 {
             font-size: 30px;
             margin-bottom: 10px;
+            text-align: center;
         }
          #weather-information h5 {
             font-size: 25px;
@@ -63,26 +68,57 @@
 <body>
     <div class="container"> 
         <div class="input-content"> 
-            <input type="text" name="" id="input-field" placeholder="Enter a location for Weather">
+            <input type="text" name="" id="input-field" placeholder="Enter a City for Weather Information">
             <a id="search-btn">Search</a>
         </div >
         <div id="weather-information"> 
             <div id="weather-img"> 
-                <p>Hello there</p>
+                
             </div>
             <h1 id="city-name"> 
-                Hello there
+                City Name
             </h1>
             <h3 id="temperature"> 
-                Hello there
+                Temperature
             </h3>
             <h5 id="weather-forecast"> 
-                Hello there
+                Weather Forecast
             </h5>
         </div>
     </div>
     <script> 
-    
+
+        //Display information into web page..
+        function displayData(data) {
+            let temperature = document.getElementById("temperature")
+            let temperatureInfo = data.main.temp;
+            temperature.innerText = temperatureInfo;
+            let weatherForecast = document.getElementById('weather-forecast');
+            let forecastInfo = data.weather[0].main;
+            weatherForecast.innerText = forecastInfo;
+            // console.log(data);
+            // console.log(forecastInfo);
+        }
+
+        //Load All Data From External Server by API...
+        function loadDataFromExternalServer() {
+            let inputField = document.getElementById("input-field");
+            let city = inputField.value;
+            let cityName = document.getElementById("city-name");
+            cityName.innerText = city;
+            let myKey = "bc7772b0ea1f03991a94552720c5a8e3";
+            //External Server Link 
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myKey}&units=metric`;
+            //External Server load from Fetch API...
+            fetch(url)
+            .then(response => response.json())
+            .then(data => displayData(data));
+            inputField.value = "";
+        };
+        // loadDataFromExternalServer;
+        let searchBtn = document.getElementById('search-btn');
+        searchBtn.addEventListener("click", loadDataFromExternalServer);
+     
     </script>
 </body>
 </html>
