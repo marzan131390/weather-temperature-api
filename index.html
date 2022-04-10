@@ -5,69 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Today's Weather in Different City.</title>
-    <style> 
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background: url("images/bg-image.jpg") no-repeat;
-            background-size: cover;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-            margin-top: 50px;
-        }
-        #input-field {
-            width: 340px;
-            height: 35px;
-            padding: 0px 15px;
-            font-size: 16px;
-            border: 1px solid #0A4A76;
-            border-right: none;
-            border-radius: .50rem 0 0 .50rem;
-        }
-        .input-content {
-            position: absolute;
-        }
-        #search-btn {
-            background-color: #DC3545;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            font-size: 18px;
-            position: relative;
-            left: -3px;
-            cursor: pointer;
-        }
-        #search-btn:hover {
-            background-color: #C82333;
-        }
-        #weather-information {
-            margin-top: 120px;
-            color: #fff;
-        }
-        #weather-information h1 {
-            font-size: 45px;
-            margin: 10px 0px;
-            text-transform: capitalize;
-        }
-        #weather-information h3 {
-            font-size: 30px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-         #weather-information p {
-            font-size: 23px;
-            text-align: center;
-            text-transform: capitalize;
-        }
-        #weather-img {
-            margin: 0px 0px -15px 13px;
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <div class="container"> 
@@ -88,45 +26,6 @@
             </p>
         </div>
     </div>
-    <script> 
-
-        //Display information into web page..
-        function displayData(data) {
-            let temperature = document.getElementById("temperature")
-            let temperatureInfo = data.main.temp;
-            temperature.innerText = temperatureInfo;
-            let weatherForecast = document.getElementById('weather-forecast');
-            let forecastInfo = data.weather[0].description;
-            weatherForecast.innerText = forecastInfo;
-            let weatherImg = document.getElementById("image");
-            let imageUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-            // let img = document.createElement("img");
-            weatherImg.setAttribute("src", imageUrl);
-            // weatherImg.appendChild(img);
-            // let changeImg = document.getElementById("image");
-            // changeImg.innerHTML = img;
-            
-        }
-
-        //Load All Data From External Server by API...
-        function loadDataFromExternalServer() {
-            let inputField = document.getElementById("input-field");
-            let city = inputField.value;
-            let cityName = document.getElementById("city-name");
-            cityName.innerText = city;
-            let myKey = "bc7772b0ea1f03991a94552720c5a8e3";
-            //External Server Link 
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myKey}&units=metric`;
-            //External Server load from Fetch API...
-            fetch(url)
-            .then(response => response.json())
-            .then(data => displayData(data));
-            inputField.value = "";
-        };
-        // loadDataFromExternalServer;
-        let searchBtn = document.getElementById('search-btn');
-        searchBtn.addEventListener("click", loadDataFromExternalServer);
-     
-    </script>
+    <script src="script/script.js"></script>
 </body>
 </html>
